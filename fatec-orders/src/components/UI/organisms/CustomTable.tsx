@@ -155,11 +155,17 @@ export default function CustomTable({ rows, headCells, editPath }: CustomTablePr
   const handleClick = (
     event: React.MouseEvent<unknown>,
     id: number,
+<<<<<<< HEAD
     router: AppRouterInstance,
     editPath: string
 
   ) => {
     router.push(`${editPath}/${id}`);
+=======
+    router: AppRouterInstance
+  ) => {
+    router.push(`/products/edit/${id}`);
+>>>>>>> 8e418072bcf3e88a9fda56f224e8977ff2bb8cc4
 
     console.log(`id: ${id}`);
     const selectedIndex = selected.indexOf(id);
@@ -240,7 +246,11 @@ export default function CustomTable({ rows, headCells, editPath }: CustomTablePr
                 return (
                   <TableRow
                     hover
+<<<<<<< HEAD
                     onClick={(event) => handleClick(event, row.id, router, editPath)}
+=======
+                    onClick={(event) => handleClick(event, row.id, router)}
+>>>>>>> 8e418072bcf3e88a9fda56f224e8977ff2bb8cc4
                     role="checkbox"
                     aria-checked={isItemSelected}
                     tabIndex={-1}

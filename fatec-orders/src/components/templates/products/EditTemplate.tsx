@@ -1,10 +1,18 @@
 "use client";
 import Layout from "@/components/UI/organisms/Layout";
+<<<<<<< HEAD
 import { IProduct } from "@/interfaces/IProducts";
+=======
+import { IProduct } from "@/interface/IProducts";
+>>>>>>> 8e418072bcf3e88a9fda56f224e8977ff2bb8cc4
 import { ProductEditValidater } from "@/validators/ProductEditValidator";
 import {
   Box,
   Button,
+<<<<<<< HEAD
+=======
+  InputLabel,
+>>>>>>> 8e418072bcf3e88a9fda56f224e8977ff2bb8cc4
   MenuItem,
   Select,
   TextField,
