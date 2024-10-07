@@ -7,7 +7,6 @@ import Layout from "@/components/UI/organisms/Layout";
 import { Box } from "@mui/material";
 import CustomTable from "@/components/UI/organisms/CustomTable";
 
-
 const Orders = () => {
 
     const [rows, setRows] = useState([])
@@ -16,16 +15,18 @@ const Orders = () => {
         const fetchOrders = async () => {
             const response = await axios.get(`${env.apiBaseUrl}/pedidos`);
 
-
-            const orders = response.data.pedidos.map((order: any) => ({
-                id: order.id,
-                description: order.descricao,
-                value: order.valor,
-                dateOfCreation: order.data
+            const pedidos = response.data.pedidos.map((pedido: any) => ({
+                id: pedido.id,
+                description: pedido.descricao,
+                value: pedido.valor,
+                dateOfCreation: pedido.data,
+                forma_pagamento: pedido.forma_pagamento,
+                cpf: pedido.cpf,
+                qtd: pedido.qtd
 
             }));
 
-            setRows(orders)
+            setRows(pedidos)
         };
 
         fetchOrders();
@@ -33,27 +34,42 @@ const Orders = () => {
     }, []);
 
 
-
     const headCells = [
         {
-            id: "description",
+            id: "cpf",
             numeric: false,
             disablePadding: false,
-            label: "Descrição",
+            label: "CPF"
         },
-
-        {
-            id: "value",
-            numeric: true,
-            disablePadding: false,
-            label: "Valor",
-        },
-
+        
         {
             id: "dateOfCreation",
             numeric: true,
             disablePadding: false,
             label: "Data"
+        },
+        
+        {
+            id: "forma_pagamento",
+            numeric: false,
+            disablePadding: false,
+            label: "Forma de Pagamento",
+        },    
+      
+
+        {
+            id: "qtd",
+            numeric: true,
+            disablePadding: false,
+            label: "Quantidade"
+        },
+
+        {
+           
+            id: "value",
+            numeric: true,
+            disablePadding: false,
+            label: "Valor",
         }
     ]
 
@@ -61,7 +77,7 @@ const Orders = () => {
     return (
         <Layout>
             <Box> Lista de Pedidos</Box>
-            <CustomTable rows={rows} headCells={headCells}></CustomTable>
+            <CustomTable rows={rows} headCells={headCells} editPath="/orders/edit"></CustomTable>
         </Layout>
     )
 }
@@ -69,4 +85,4 @@ const Orders = () => {
 
 
 
-export default Orders
+export default Orders;
